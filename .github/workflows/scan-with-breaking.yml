@@ -1,0 +1,22 @@
+name: Entrega 4 - Punto 2 - Scan breaking the build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fluid-breaking-strict:
+    runs-on: ubuntu-latest
+    name: Escaneo Estricto (SAST & SCA)
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fluid Attacks SAST (Strict Mode)
+        uses: docker://fluidattacks/sast:latest
+        with:
+          args: sast --strict scan config.yaml
+
+      - name: Fluid Attacks SCA (Strict Mode)
+        uses: docker://fluidattacks/sca:latest
+        with:
+          args: sca --strict scan config.yaml
