@@ -1,0 +1,21 @@
+name: Entrega 4 - Punto 1 (Syntax Fluid Attacks)
+
+on: [push, pull_request]
+
+jobs:
+  fluid-standalone:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fluid Attacks SAST
+        uses: docker://fluidattacks/sast:latest
+        with:
+          args: sast scan .
+        continue-on-error: true
+
+      - name: Fluid Attacks SCA
+        uses: docker://fluidattacks/sca:latest
+        with:
+          args: sca scan .
+        continue-on-error: true
