@@ -1,6 +1,7 @@
-name: Entrega 4 - Punto 1 (Syntax Fluid Attacks)
+name: Entrega 4 - Punto 1 - Scan without breaking the build
 
-on: [push, pull_request]
+on:
+  workflow_dispatch:
 
 jobs:
   fluid-standalone:
