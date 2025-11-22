@@ -1,0 +1,29 @@
+name: Entrega 4 - Punto 3 - Scan with external configuration
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fluid-attacks-advanced:
+    runs-on: ubuntu-latest
+    name: Escaneo con Configuración Externa
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fluid Attacks SAST
+        uses: docker://fluidattacks/sast:latest
+        with:
+          args: sast scan config.yaml
+
+      - name: Fluid Attacks SCA
+        uses: docker://fluidattacks/sca:latest
+        with:
+          args: sca scan config.yaml
+
+      - name: Subir Reporte CSV
+        if: always() 
+        uses: actions/upload-artifact@v4
+        with:
+          name: reporte-csv-wackopicko
+          path: reporte-final.csv

@@ -1,0 +1,17 @@
+namespace: WackoPicko
+working_dir: .
+language: EN
+
+strict: true
+
+output:
+  file_path: ./reporte-final.csv
+  format: CSV
+
+sast:
+  include:
+    - .  
+
+sca:
+  include:
+    - .  
