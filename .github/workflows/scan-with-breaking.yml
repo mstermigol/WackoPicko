@@ -14,9 +14,9 @@ jobs:
       - name: Fluid Attacks SAST (Strict Mode)
         uses: docker://fluidattacks/sast:latest
         with:
-          args: sast --strict scan config.yaml
+          args: sast --strict scan .
 
       - name: Fluid Attacks SCA (Strict Mode)
         uses: docker://fluidattacks/sca:latest
         with:
-          args: sca --strict scan config.yaml
+          args: sca --strict scan .
